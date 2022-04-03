@@ -1,57 +1,73 @@
-
 //DOM objects
-const dateEl = document.querySelector('#currentDay')
-const textArea = document.getElementsByTagName("textarea")
-console.log(textArea)
-
+const dateEl = document.querySelector("#currentDay");
+const textArea = document.getElementsByTagName("textarea");
+const btnEl = document.getElementsByClassName("btn");
+const idEl = document.getElementsByClassName("time");
+let textAreaIndex;
+let timeBlockIndex;
+let savedArr = []
 
 //variables
-const date = moment().format("dddd, MMMM Do")
-
+const date = moment().format("dddd, MMMM Do");
 
 //add date element to header
-dateEl.append(date)
+dateEl.append(date);
 
+
+// loop for save event listener
+
+for (let i = 0; i < btnEl.length; i++) {
+  btnEl[i].addEventListener("click", saveData);
+}
+
+// function to highlight each timeblock based on relation to current time
 function getTimeBlock() {
-    let currentTime = moment().format('H');
-    console.log(currentTime)
-    const idEl = document.getElementsByClassName('time')
-    for (let i = 0; i < 9; i++) {
-        let getIdTime = idEl[i].id
-        console.log(getIdTime)
-        let getTextEl = textArea[i];
-        console.log(getTextEl)
+  //local variables
+  let currentTime = moment().format("H");
 
-        if (getIdTime > currentTime) {
-            getTextEl.classList.add("bg-primary", "text-white");
-            
-        }
+  //iterate through the UI to color
+  for (let i = 0; i < 9; i++) {
+    let getIdTime = idEl[i].id;
 
-        if (getIdTime < currentTime) {
-            getTextEl.classList.add("bg-secondary", "text-white")
-        }
+    let getTextEl = textArea[i];
 
-        if (getIdTime == currentTime) {
-            getTextEl.classList.add("bg-success", "text-white")
-        }
-
-
+    if (getIdTime > currentTime) {
+      getTextEl.classList.add("bg-info", "text-white");
     }
+
+    if (getIdTime < currentTime) {
+      getTextEl.classList.add("bg-secondary", "text-white");
+    }
+
+    if (getIdTime == currentTime) {
+      getTextEl.classList.add("bg-success");
+    }
+  }
+}
+
+//function to save data
+// TODO: need to save data properly to local storage
+// TODO: need to grab data to show on refresh
+function saveData(event) {
+  const btnClick = event.target;
+  const btnClickIndex = btnClick.id;
+  const btnClickValue = textArea[btnClickIndex].value;
+  console.log(btnClickValue);
+
+  localStorage.setItem("index", btnClickIndex);
+  localStorage.setItem("text area", btnClickValue);
+  savedArr.push();
+  console.log(savedArr)
+}
+
+function onLoad () {
+  const textAreaIndex = localStorage.getItem("index");
+  const textAreaContent = localStorage.getItem("text area")
+  console.log(textAreaIndex)
+  console.log(textAreaContent)
 
 
 }
 
-
-
-// console.log(moment().format('H'))
-
-// console.log(moment("10", 'h').format('H'))
-
-// var id = document.getElementsByClassName('time')[0].id
-
-// console.log(id)
 getTimeBlock();
-
-
-
-
+onLoad();
