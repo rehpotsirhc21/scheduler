@@ -3,12 +3,13 @@ const dateEl = document.querySelector("#currentDay");
 const textArea = document.getElementsByTagName("textarea");
 const btnEl = document.getElementsByClassName("btn");
 const idEl = document.getElementsByClassName("time");
-let textAreaIndex;
-let timeBlockIndex;
-let savedArr = []
+
 
 //variables
 const date = moment().format("dddd, MMMM Do");
+let textAreaIndex;
+let timeBlockIndex;
+let savedArr = []
 
 //add date element to header
 dateEl.append(date);
@@ -24,10 +25,10 @@ for (let i = 0; i < btnEl.length; i++) {
 function getTimeBlock() {
   //local variables
   let currentTime = moment().format("H");
-
+    console.log(currentTime);
   //iterate through the UI to color
   for (let i = 0; i < 9; i++) {
-    let getIdTime = idEl[i].id;
+    let getIdTime = parseInt(idEl[i].id);
 
     let getTextEl = textArea[i];
 
@@ -52,12 +53,17 @@ function saveData(event) {
   const btnClick = event.target;
   const btnClickIndex = btnClick.id;
   const btnClickValue = textArea[btnClickIndex].value;
-  console.log(btnClickValue);
+  
 
   localStorage.setItem("index", btnClickIndex);
   localStorage.setItem("text area", btnClickValue);
-  savedArr.push();
-  console.log(savedArr)
+  savedArr.push(btnClickValue);
+
+  for (let i = 0; i <savedArr.length; i++) {
+      console.log(savedArr[i]);
+  }
+  
+  
 }
 
 function onLoad () {
