@@ -63,8 +63,7 @@ function saveData(event) {
   let getId = btnClick.parentNode.id;
   let textContent = btnClick.previousElementSibling.value;
 
-  console.log(btnClick.parentNode.id);
-  console.log(textContent);
+  
 
   if (!textContent) {
     localStorage.removeItem(getId);
