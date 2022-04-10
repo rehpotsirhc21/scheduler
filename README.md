@@ -22,6 +22,8 @@ Resources:
 for looping through the btn array for the event listener 
 https://stackoverflow.com/questions/19655189/javascript-click-event-listener-on-class
 
-![gitHub repo](https://github.com/rehpotsirhc21/scheduler)
+repo: (https://github.com/rehpotsirhc21/scheduler)
 
-![gitHub pages ](https://rehpotsirhc21.github.io/scheduler/)
+Deployed application: (https://rehpotsirhc21.github.io/scheduler/)
+
+![full site screen print](./assets/screencapture-127-0-0-1-5500-index-html-2022-04-10-17_35_37.png)
